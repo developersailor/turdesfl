@@ -63,12 +63,17 @@ class _LoginScreenState extends BaseState<LoginScreen> with LoginScreenMixin {
                                 password: passwordController.text,
                               ),
                             );
-                        context.navigateNamedTo('/home');
                       },
                       child: const Text('Giriş Yap'),
                     );
                   }
                 },
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  context.navigateNamedTo('/register');
+                },
+                child: const Text('Register'),
               ),
             ],
           ),

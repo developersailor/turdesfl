@@ -1,12 +1,12 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:gen/gen.dart';
-import 'package:turdes/product/service/interface/authentication_operation.dart';
+import 'package:turdes/product/service/interface/login_operation.dart';
 import 'package:turdes/product/service/manager/product_service_manager.dart';
 import 'package:turdes/product/service/manager/product_service_path.dart';
 import 'package:vexana/vexana.dart';
 
-final class LoginService extends AuthenticationOperation {
+final class LoginService extends LoginOperation {
   LoginService({
     required ProductNetworkManager productNetworkManager,
   }) : _networkManager = productNetworkManager;
