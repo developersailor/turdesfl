@@ -1,5 +1,6 @@
-import 'package:turdes/product/cache/model/user_cache_model.dart';
 import 'package:core/core.dart';
+import 'package:turdes/product/cache/model/login_cache_model.dart';
+import 'package:turdes/product/cache/model/user_cache_model.dart';
 
 /// [ProductCache] is a cache manager for the product module.
 final class ProductCache {
@@ -12,10 +13,12 @@ final class ProductCache {
     await _cacheManager.init(
       items: [
         UserCacheModel.empty(),
+        LoginCacheModel.empty(),
       ],
     );
   }
 
-  late final HiveCacheOperation<UserCacheModel> userCacheOperation =
-      HiveCacheOperation<UserCacheModel>();
+  late final SecureCacheManager userCacheOperation = SecureCacheManager(
+    path: 'user',
+  );
 }

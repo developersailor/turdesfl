@@ -1,3 +1,4 @@
+import 'package:turdes/features/login/bloc/login_bloc.dart';
 import 'package:turdes/product/state/container/index.dart';
 import 'package:turdes/product/state/view_model/product_view_model.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,9 @@ final class StateInitialize extends StatelessWidget {
       providers: [
         BlocProvider<ProductViewModel>.value(
           value: ProductStateItems.productViewModel,
+        ),
+        BlocProvider<LoginBloc>.value(
+          value: ProductStateItems.loginBloc,
         ),
       ],
       child: child,

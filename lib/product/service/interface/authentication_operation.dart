@@ -1,5 +1,5 @@
 import 'package:gen/gen.dart';
 
 abstract class AuthenticationOperation {
-  Future<List<User>> users();
+  Future<LoginResponse> login(String? email, String? password);
 }

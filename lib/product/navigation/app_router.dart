@@ -1,18 +1,22 @@
-import 'package:turdes/feature/home/view/home_detail_view.dart';
-import 'package:turdes/feature/home/view/home_view.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
+import 'package:turdes/product/navigation/app_router.gr.dart';
 
-part 'app_router.gr.dart';
-
-@AutoRouterConfig(replaceInRouteName: AppRouter._replaceRouteName)
+@AutoRouterConfig(replaceInRouteName: 'Screen|Page,Route')
 
 /// Project router information class
-final class AppRouter extends _$AppRouter {
-  static const _replaceRouteName = 'View,Route';
+final class AppRouter extends RootStackRouter {
+  @override
+  RouteType get defaultRouteType =>
+      const RouteType.material(); //.cupertino, .adaptive ..etc
+
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(page: HomeRoute.page, initial: true),
-        AutoRoute(page: HomeDetailRoute.page),
+        AutoRoute(page: LoginRoute.page, initial: true),
+        AutoRoute(page: HomeRoute.page, path: '/home'),
+      ];
+
+  @override
+  List<AutoRouteGuard> get guards => [
+        // optionally add root guards here
       ];
 }

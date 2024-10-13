@@ -20,9 +20,6 @@ final class UserCacheModel with CacheModel {
   }
 
   @override
-  String get id => user.id.toString();
-
-  @override
   Map<String, dynamic> toJson() {
     return user.toJson();
   }

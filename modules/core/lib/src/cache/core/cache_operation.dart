@@ -1,11 +1,17 @@
-import 'package:core/src/cache/core/cache_model.dart';
+import 'package:core/core.dart';
 
+/// An abstract class representing a cache operation for a specific type of
+/// cache model. Classes that extend this abstract class should implement
+/// the necessary methods to perform cache operations for the specified
+/// type parameter [T].
+///
+/// [T] extends [CacheModel] to ensure that only valid cache models are
+/// used with this operation.
 abstract class CacheOperation<T extends CacheModel> {
-  void add(T item);
-  void addAll(List<T> items);
-  void remove(String id);
-
-  void clear();
-  List<T> getAll();
-  T? get(String id);
+  Future<void> add(T item);
+  Future<void> addAll(List<T> items);
+  Future<void> remove(String id);
+  Future<void> clear();
+  Future<List<T>> getAll(); // Needs Future<List<T>> due to async operations
+  Future<T?> get(String id); // Change to Future<T?>
 }
