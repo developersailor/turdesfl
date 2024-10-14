@@ -1,6 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:turdes/product/init/theme/custom_color_scheme.dart';
 import 'package:turdes/product/init/theme/custom_theme.dart';
-import 'package:flutter/material.dart';
 
 /// Custom light theme for project design
 final class CustomDarkTheme implements CustomTheme {

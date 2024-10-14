@@ -1,7 +1,7 @@
-import 'package:turdes/product/init/theme/custom_color_scheme.dart';
-import 'package:turdes/product/init/theme/custom_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:turdes/product/init/theme/custom_color_scheme.dart';
+import 'package:turdes/product/init/theme/custom_theme.dart';
 
 /// Custom light theme for project design
 final class CustomLightTheme implements CustomTheme {

@@ -1,6 +1,6 @@
-import 'package:turdes/product/utility/constans/enums/locales.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:turdes/product/utility/constans/enums/locales.dart';
 
 @immutable
 

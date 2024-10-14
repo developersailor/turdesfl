@@ -1,8 +1,8 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:turdes/features/login/bloc/login_bloc.dart';
 import 'package:turdes/product/state/container/index.dart';
 import 'package:turdes/product/state/view_model/product_view_model.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 final class StateInitialize extends StatelessWidget {
   const StateInitialize({required this.child, super.key});

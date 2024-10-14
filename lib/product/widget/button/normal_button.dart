@@ -1,5 +1,5 @@
-import 'package:turdes/product/utility/constans/project_radius.dart';
 import 'package:flutter/material.dart';
+import 'package:turdes/product/utility/constans/project_radius.dart';
 
 /// radius is 20
 final class NormalButton extends StatelessWidget {

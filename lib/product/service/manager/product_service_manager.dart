@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:turdes/product/init/config/app_environment.dart';
 import 'package:flutter/material.dart';
+import 'package:turdes/product/init/config/app_environment.dart';
 import 'package:vexana/vexana.dart';
 
 /// Product network manager

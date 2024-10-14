@@ -1,8 +1,7 @@
 import 'dart:convert';
 
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-
 import 'package:core/core.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SecureCacheOperation<T extends CacheModel> {
   SecureCacheOperation({required this.fromJson});
