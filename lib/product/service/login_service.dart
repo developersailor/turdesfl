@@ -1,19 +1,16 @@
 // ignore_for_file: public_member_api_docs
 
+import 'package:flutter/foundation.dart';
 import 'package:gen/gen.dart';
-import 'package:turdes/product/service/interface/login_operation.dart';
 import 'package:turdes/product/service/manager/product_service_manager.dart';
 import 'package:turdes/product/service/manager/product_service_path.dart';
 import 'package:vexana/vexana.dart';
 
-final class LoginService extends LoginOperation {
-  LoginService({
-    required ProductNetworkManager productNetworkManager,
-  }) : _networkManager = productNetworkManager;
-  final INetworkManager<EmptyModel> _networkManager;
+class LoginService {
+  LoginService(this._networkManager);
+  final INetworkManager _networkManager;
 
-  @override
-  Future<LoginResponse> login(String? email, String? password) async {
+  Future<LoginResponse?> login(String email, String password) async {
     final response = await _networkManager.send<LoginResponse, LoginResponse>(
       ProductServicePath.login.value,
       parseModel: LoginResponse(),
@@ -24,6 +21,11 @@ final class LoginService extends LoginOperation {
       },
     );
 
-    return response.data ?? LoginResponse();
+    if (response.data != null) {
+      return response.data;
+    } else {
+      // Handle error or null response
+      return null;
+    }
   }
 }

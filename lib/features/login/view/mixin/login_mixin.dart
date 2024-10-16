@@ -12,8 +12,6 @@ mixin LoginScreenMixin on BaseState<LoginScreen> {
   late final LoginBloc _loginBloc;
   late final ProductNetworkErrorManager _productNetworkErrorManager;
 
-  LoginBloc get loginBloc => _loginBloc;
-
   @override
   void initState() {
     super.initState();

@@ -10,6 +10,9 @@ final class ProductNetworkManager extends NetworkManager<EmptyModel> {
       : super(
           options: BaseOptions(
             baseUrl: AppEnvironmentItems.baseUrl.value,
+            headers: <String, dynamic>{
+              HttpHeaders.contentTypeHeader: 'application/json',
+            },
           ),
         );
 

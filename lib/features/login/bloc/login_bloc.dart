@@ -14,24 +14,38 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   })  : _authenticationOperation = authenticationOperation,
         _productCache = productCache,
         super(LoginInitial()) {
-    on<LoginButtonPressed>(_login);
+    on<LoginButtonPressed>(_onLoginButtonPressed);
   }
   final LoginService _authenticationOperation;
   final ProductCache _productCache; // Constructor burada kapanıyor
 
-  Future<void> _login(
+  Future<void> _onLoginButtonPressed(
     LoginButtonPressed event,
     Emitter<LoginState> emit,
   ) async {
-    final response = await _authenticationOperation.login(
-      event.email,
-      event.password,
-    );
-    if (response.accessToken != null) {
-      // Token'ı kaydet
-      saveToken(response.accessToken);
+    emit(LoginLoading());
+    print('LoginLoading state emitted');
+    try {
+      final response = await _authenticationOperation.login(
+        event.email,
+        event.password,
+      );
+      print('Gönderilen Veri: ${event.email}, ${event.password}');
+      print('API Yanıtı: ${response?.accessToken}');
 
-      emit(LoginSuccess());
+      if (response?.accessToken != null) {
+        // Token'ı kaydet
+        saveToken(response!.accessToken);
+        print('LoginSuccess state emitted');
+        emit(LoginSuccess());
+      } else {
+        // Null yanıtı işleyin
+        print('Error: API response is null or accessToken is null');
+        emit(LoginFailure(error: 'Invalid response from server'));
+      }
+    } catch (error) {
+      print('Error: $error');
+      emit(LoginFailure(error: error.toString()));
     }
   }
 

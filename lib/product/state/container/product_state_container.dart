@@ -28,7 +28,7 @@ final class ProductContainer {
       // AuthenticationService'i kaydedin
       ..registerLazySingleton<LoginService>(
         () => LoginService(
-          productNetworkManager: _getIt<ProductNetworkManager>(),
+          _getIt<ProductNetworkManager>(),
         ),
       )
       ..registerFactory<LoginBloc>(

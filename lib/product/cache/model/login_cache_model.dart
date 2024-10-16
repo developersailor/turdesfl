@@ -15,12 +15,12 @@ final class LoginCacheModel with CacheModel {
       return this;
     }
     return copyWith(
-      loginResponse: LoginResponse.fromJson(jsonMap),
+      loginResponse: LoginResponse().fromJson(jsonMap),
     );
   }
 
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic>? toJson() {
     return loginResponse.toJson();
   }
 
