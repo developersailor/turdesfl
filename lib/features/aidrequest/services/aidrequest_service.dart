@@ -28,4 +28,33 @@ class AidrequestService extends AidrequestOperation {
     }
     return response.data ?? [];
   }
+
+  @override
+  Future<AidrequestResponse?> createAidrequest(
+    AidrequestPayload? request,
+  ) async {
+    final token = await _productCache.loginCacheOperation.read('token');
+    final response =
+        await _networkManager.send<AidrequestResponse, AidrequestResponse>(
+      ProductServicePath.aidrequest.value,
+      parseModel: const AidrequestResponse(),
+      method: RequestType.POST,
+      data: {
+        'userId': request?.userId,
+        'organizationId': request?.organizationId,
+        'type': request?.type,
+        'description': request?.description,
+        'status': request?.status,
+      },
+      options: Options(
+        headers: {
+          'Authorization': 'Bearer $token',
+        },
+      ),
+    );
+    if (response.data != null) {
+      return response.data;
+    }
+    return null;
+  }
 }

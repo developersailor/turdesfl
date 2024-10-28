@@ -6,3 +6,8 @@ abstract class AidrequestEvent {
 }
 
 class FetchAidrequestList extends AidrequestEvent {}
+
+class CreateAidrequest extends AidrequestEvent {
+  CreateAidrequest(this.request);
+  final AidrequestPayload request;
+}

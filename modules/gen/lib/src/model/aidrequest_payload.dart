@@ -6,8 +6,8 @@ class AidrequestPayload {
     this.description,
     this.status,
   });
-  final String? userId;
-  final String? organizationId;
+  final int? userId;
+  final int? organizationId;
   final String? type;
   final String? description;
   final String? status;

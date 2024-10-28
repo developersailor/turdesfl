@@ -18,6 +18,16 @@ class AidrequestEmpty extends AidrequestState {
   const AidrequestEmpty();
 }
 
+class AidrequestCreate extends AidrequestState {
+  const AidrequestCreate(this.aidRequest);
+  final AidrequestResponse aidRequest;
+}
+
+class AidrequestCreateError extends AidrequestState {
+  const AidrequestCreateError(this.message);
+  final String message;
+}
+
 class AidrequestError extends AidrequestState {
   const AidrequestError(this.message);
   final String message;

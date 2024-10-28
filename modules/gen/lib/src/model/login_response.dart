@@ -42,7 +42,7 @@ part 'login_response.g.dart';
 @JsonSerializable()
 @immutable
 class LoginResponse extends INetworkModel<LoginResponse> {
-  const LoginResponse({this.accessToken, this.refreshToken});
+  const LoginResponse({this.accessToken, this.refreshToken, this.userId});
 
   ///[accessToken] is the token used to authenticate subsequent requests.
   @JsonKey(name: 'access_token')
@@ -52,15 +52,13 @@ class LoginResponse extends INetworkModel<LoginResponse> {
   @JsonKey(name: 'refresh_token')
   final String? refreshToken;
 
+  final int? userId;
+
   @override
   LoginResponse fromJson(Map<String, dynamic> json) {
     return _$LoginResponseFromJson(json);
   }
 
   @override
-  Map<String, dynamic>? toJson() {
-    return {
-      'accessToken': accessToken,
-    };
-  }
+  Map<String, dynamic>? toJson() => _$LoginResponseToJson(this);
 }
