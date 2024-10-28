@@ -36,7 +36,7 @@ dependencies:
   widgets:
     path: ./modules/widgets
   firebase_messaging: ^15.1.3
-  shadcn_ui: ^0.13.4+1
+  shadcn_ui: ^0.14.1
 
 dev_dependencies:
   auto_route_generator: ^9.0.0
