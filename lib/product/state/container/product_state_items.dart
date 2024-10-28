@@ -1,3 +1,6 @@
+import 'package:turdes/features/aidrequest/bloc/aidrequest_bloc.dart';
+
+import 'package:turdes/features/aidrequest/services/aidrequest_service.dart';
 import 'package:turdes/features/login/bloc/login_bloc.dart';
 import 'package:turdes/product/init/index.dart';
 import 'package:turdes/product/service/login_service.dart';
@@ -17,4 +20,8 @@ final class ProductStateItems {
   static ProductCache get productCache => ProductContainer.read<ProductCache>();
   static LoginService get loginService => ProductContainer.read<LoginService>();
   static LoginBloc get loginBloc => ProductContainer.read<LoginBloc>();
+  static AidrequestBloc get aidrequestBloc =>
+      ProductContainer.read<AidrequestBloc>();
+  static AidrequestService get aidrequestService =>
+      ProductContainer.read<AidrequestService>();
 }

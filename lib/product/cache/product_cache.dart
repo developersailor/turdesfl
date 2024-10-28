@@ -21,4 +21,7 @@ final class ProductCache {
   late final SecureCacheManager userCacheOperation = SecureCacheManager(
     path: 'user',
   );
+  late final SecureCacheManager loginCacheOperation = SecureCacheManager(
+    path: 'login',
+  );
 }

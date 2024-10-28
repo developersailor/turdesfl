@@ -2,4 +2,5 @@
 abstract class AppConfiguration {
   /// it using from network manager
   String get baseUrl;
+  String get token;
 }

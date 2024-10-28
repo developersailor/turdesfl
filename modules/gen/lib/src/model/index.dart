@@ -1,3 +1,7 @@
+export 'aidrequest_payload.dart';
+export 'aidrequest_response.dart';
+export 'aidrequest_update_payload.dart';
+export 'aidrequest_update_request.dart';
 export 'attributes.dart';
 export 'book.dart';
 export 'login_payload.dart';

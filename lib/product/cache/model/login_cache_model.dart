@@ -4,7 +4,7 @@ import 'package:kartal/kartal.dart';
 
 final class LoginCacheModel with CacheModel {
   LoginCacheModel({required this.loginResponse});
-  LoginCacheModel.empty() : loginResponse = LoginResponse();
+  LoginCacheModel.empty() : loginResponse = const LoginResponse();
   final LoginResponse loginResponse;
 
   @override
@@ -15,7 +15,7 @@ final class LoginCacheModel with CacheModel {
       return this;
     }
     return copyWith(
-      loginResponse: LoginResponse().fromJson(jsonMap),
+      loginResponse: const LoginResponse().fromJson(jsonMap),
     );
   }
 

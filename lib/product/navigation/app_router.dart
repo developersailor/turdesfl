@@ -13,6 +13,8 @@ final class AppRouter extends RootStackRouter {
   List<AutoRoute> get routes => [
         AutoRoute(page: LoginRoute.page, initial: true),
         AutoRoute(page: HomeRoute.page, path: '/home'),
+        //AutoRoute(page: Aid.page, path: '/aidrequest'),
+        AutoRoute(page: AidrequestsRoute.page, path: '/aidrequestview'),
       ];
 
   @override

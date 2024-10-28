@@ -10,6 +10,11 @@ final class ProdEnv implements AppConfiguration {
   @EnviedField(varName: 'BASE_URL')
   static final String _baseUrl = _ProdEnv._baseUrl;
 
+  @EnviedField(varName: 'TOKEN')
+  static final String _token = _ProdEnv._token;
+
   @override
   String get baseUrl => _baseUrl;
+  @override
+  String get token => _token;
 }

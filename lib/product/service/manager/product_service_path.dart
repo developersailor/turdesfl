@@ -5,7 +5,10 @@ enum ProductServicePath {
   userV1('user'),
   posts('posts'),
   usersV2('v2/users'),
-  login('auth/login');
+  login('auth/login'),
+  aidrequest('aidrequests'),
+  aidrequestCreate('aidrequests'),
+  aidrequestStatusUpdate('status');
 
   final String value;
   const ProductServicePath(this.value);

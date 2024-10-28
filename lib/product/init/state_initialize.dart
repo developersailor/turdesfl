@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:turdes/features/aidrequest/bloc/aidrequest_bloc.dart';
 import 'package:turdes/features/login/bloc/login_bloc.dart';
 import 'package:turdes/product/state/container/index.dart';
 import 'package:turdes/product/state/view_model/product_view_model.dart';
@@ -16,6 +17,12 @@ final class StateInitialize extends StatelessWidget {
         ),
         BlocProvider<LoginBloc>.value(
           value: ProductStateItems.loginBloc,
+        ),
+        BlocProvider<AidrequestBloc>.value(
+          value: ProductStateItems.aidrequestBloc,
+        ),
+        RepositoryProvider(
+          create: (context) => ProductStateItems.aidrequestService,
         ),
       ],
       child: child,

@@ -8,6 +8,7 @@ import 'package:vexana/vexana.dart';
 final class ProductNetworkManager extends NetworkManager<EmptyModel> {
   ProductNetworkManager.base()
       : super(
+          isEnableLogger: true,
           options: BaseOptions(
             baseUrl: AppEnvironmentItems.baseUrl.value,
             headers: <String, dynamic>{

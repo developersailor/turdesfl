@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+import 'package:turdes/product/navigation/app_router.gr.dart';
+
 @RoutePage()
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,8 +18,13 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text('Home'),
       ),
-      body: const Center(
-        child: Text('Home Screen'),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            context.router.push(const AidrequestsRoute());
+          },
+          child: const Text('Aid Request'),
+        ),
       ),
     );
   }
