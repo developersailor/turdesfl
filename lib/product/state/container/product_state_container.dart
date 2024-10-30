@@ -4,6 +4,8 @@ import 'package:turdes/features/aidrequest/bloc/aidrequest_bloc.dart';
 
 import 'package:turdes/features/aidrequest/services/aidrequest_service.dart';
 import 'package:turdes/features/login/bloc/login_bloc.dart';
+import 'package:turdes/features/register/bloc/register_bloc.dart';
+import 'package:turdes/features/register/service/register_service.dart';
 import 'package:turdes/product/cache/product_cache.dart';
 import 'package:turdes/features/login/service/login_service.dart';
 import 'package:turdes/product/service/manager/product_service_manager.dart';
@@ -48,6 +50,17 @@ final class ProductContainer {
       ..registerFactory<AidrequestBloc>(
         () => AidrequestBloc(
           _getIt<AidrequestService>(),
+        ),
+      )
+      ..registerFactory<RegisterService>(
+        () => RegisterService(
+          productServiceManager: _getIt<ProductNetworkManager>(),
+        ),
+      )
+      ..registerLazySingleton<RegisterBloc>(
+        () => RegisterBloc(
+          RegisterService(
+              productServiceManager: _getIt<ProductNetworkManager>()),
         ),
       );
   }
