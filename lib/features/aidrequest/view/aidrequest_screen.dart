@@ -46,23 +46,28 @@ class _AidrequestsScreenState extends BaseState<AidrequestsScreen>
           },
           child: const Icon(Icons.add),
         ),
-        body: BlocBuilder<AidrequestBloc, AidrequestState>(
-          builder: (context, state) {
-            if (state is AidrequestLoading) {
-              return const Center(child: CircularProgressIndicator());
-            } else if (state is AidrequestError) {
-              return Center(child: Text('Error: ${state.message}'));
-            } else if (state is AidrequestEmpty) {
-              return const Center(child: Text('No aid requests available.'));
-            } else if (state is AidrequestLoaded) {
-              return AidrequestsList(aidrequests: state.aidRequests);
-            } else if (state is AidrequestCreate) {
-              // Handle the state after creation
-              return const Center(child: Text('Aid request created.'));
-            } else {
-              return const Center(child: Text('Unexpected state.'));
-            }
+        body: RefreshIndicator(
+          onRefresh: () async {
+            context.read<AidrequestBloc>().add(FetchAidrequestList());
           },
+          child: BlocBuilder<AidrequestBloc, AidrequestState>(
+            builder: (context, state) {
+              if (state is AidrequestLoading) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (state is AidrequestError) {
+                return Center(child: Text('Error: ${state.message}'));
+              } else if (state is AidrequestEmpty) {
+                return const Center(child: Text('No aid requests available.'));
+              } else if (state is AidrequestLoaded) {
+                return AidrequestsList(aidrequests: state.aidRequests);
+              } else if (state is AidrequestCreate) {
+                // Handle the state after creation
+                return const Center(child: Text('Aid request created.'));
+              } else {
+                return const Center(child: Text('Unexpected state.'));
+              }
+            },
+          ),
         ),
       ),
     );
@@ -102,7 +107,7 @@ class _AidRequestCreateViewState extends State<AidRequestCreateView> {
                       type: widget.typeController.text,
                       description: widget.descriptionController.text,
                       status: 'pending',
-                      userId: int.parse(id ?? '1'),
+                      userId: int.parse(id ?? '0'),
                       organizationId: 1,
                     ),
                   ),

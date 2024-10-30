@@ -66,17 +66,27 @@ class LoginForm extends StatelessWidget with LoginScreenMixin {
               if (state is LoginLoading) {
                 return const CircularProgressIndicator();
               }
-              return ElevatedButton(
-                onPressed: () {
-                  Logger().i('Login button pressed');
-                  context.read<LoginBloc>().add(
-                        LoginButtonPressed(
-                          email: emailController.text,
-                          password: passwordController.text,
-                        ),
-                      );
-                },
-                child: const Text('Giriş Yap'),
+              return Column(
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Logger().i('Login button pressed');
+                      context.read<LoginBloc>().add(
+                            LoginButtonPressed(
+                              email: emailController.text,
+                              password: passwordController.text,
+                            ),
+                          );
+                    },
+                    child: const Text('Giriş Yap'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      context.router.push(RegisterRoute());
+                    },
+                    child: const Text('Register'),
+                  ),
+                ],
               );
             },
           ),

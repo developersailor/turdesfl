@@ -6,6 +6,7 @@ enum ProductServicePath {
   posts('posts'),
   usersV2('v2/users'),
   login('auth/login'),
+  register('auth/register'),
   aidrequest('aidrequests'),
   aidrequestCreate('aidrequests'),
   aidrequestStatusUpdate('status');
