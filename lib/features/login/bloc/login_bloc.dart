@@ -3,7 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:turdes/features/login/bloc/login_state.dart';
 import 'package:turdes/product/cache/product_cache.dart';
-import 'package:turdes/product/service/login_service.dart';
+import 'package:turdes/features/login/service/login_service.dart';
 
 part 'login_event.dart';
 
