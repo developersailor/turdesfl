@@ -1,1 +1,36 @@
-{}
+{
+  "aidrequestscreen": {
+    "title": "Yardım Talebi",
+    "description": "Yardım talebinde bulunmak için lütfen aşağıdaki formu doldurun.",
+    "name": "İsim",
+    "email": "E-posta",
+    "phone": "Telefon Numarası",
+    "address": "Adres",
+    "submit": "Gönder",
+    "success": "Yardım talebi başarıyla oluşturuldu!",
+    "emptyState": "Mevcut yardım talebi yok.",
+    "unexpectedState": "Beklenmeyen durum.",
+    "create": "Oluştur"
+  },
+  "loginscreen": {
+    "title": "Giriş Yap",
+    "username": "Kullanıcı Adı",
+    "password": "Şifre",
+    "login": "Giriş Yap",
+    "forgotpassword": "Şifrenizi mi unuttunuz?",
+    "signup": "Kayıt Ol"
+  },
+  "registerscreen": {
+    "title": "Kayıt Ol",
+    "name": "İsim",
+    "username": "Kullanıcı Adı",
+    "email": "E-posta",
+    "password": "Şifre",
+    "phone": "Telefon Numarası",
+    "confirmpassword": "Şifreyi Onayla",
+    "register": "Kayıt Ol",
+    "alreadyhaveaccount": "Zaten bir hesabınız var mı? Giriş Yap",
+    "terms": "Şartlar ve Koşullar",
+    "privacy": "Gizlilik Politikası"
+  }
+}

@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gen/gen.dart';
 import 'package:turdes/features/register/bloc/register_bloc.dart';
 import 'package:turdes/features/register/service/register_service.dart';
+import 'package:turdes/product/init/language/locale_keys.g.dart';
 import 'package:turdes/product/service/manager/product_service_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 @RoutePage()
 class RegisterScreen extends StatelessWidget {
@@ -22,7 +24,7 @@ class RegisterScreen extends StatelessWidget {
       ),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Register'),
+          title: Text(LocaleKeys.registerscreen_title.tr()),
         ),
         body: BlocListener<RegisterBloc, RegisterState>(
           listener: (context, state) {
@@ -42,19 +44,27 @@ class RegisterScreen extends StatelessWidget {
               children: [
                 TextField(
                   controller: nameController,
-                  decoration: const InputDecoration(labelText: 'Name'),
+                  decoration: InputDecoration(
+                    labelText: LocaleKeys.registerscreen_name.tr(),
+                  ),
                 ),
                 TextField(
                   controller: emailController,
-                  decoration: const InputDecoration(labelText: 'Email'),
+                  decoration: InputDecoration(
+                    labelText: LocaleKeys.registerscreen_email.tr(),
+                  ),
                 ),
                 TextField(
                   controller: phoneController,
-                  decoration: const InputDecoration(labelText: 'Phone'),
+                  decoration: InputDecoration(
+                    labelText: LocaleKeys.registerscreen_phone.tr(),
+                  ),
                 ),
                 TextField(
                   controller: passwordController,
-                  decoration: const InputDecoration(labelText: 'Password'),
+                  decoration: InputDecoration(
+                    labelText: LocaleKeys.registerscreen_password.tr(),
+                  ),
                 ),
                 const SizedBox(height: 16),
                 BlocBuilder<RegisterBloc, RegisterState>(
@@ -73,7 +83,7 @@ class RegisterScreen extends StatelessWidget {
                         );
                         context.read<RegisterBloc>().add(RegisterUser(payload));
                       },
-                      child: const Text('Register'),
+                      child: Text(LocaleKeys.registerscreen_register.tr()),
                     );
                   },
                 ),

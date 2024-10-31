@@ -1,1 +1,36 @@
-{}
+{
+  "aidrequestscreen": {
+    "title": "Aid Request",
+    "description": "Please fill out the form below to request aid.",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone Number",
+    "address": "Address",
+    "submit": "Submit",
+    "success": "Aid request created successfully!",
+    "emptyState": "No aid requests available.",
+    "unexpectedState": "Unexpected state.",
+    "create": "Create"
+  },
+  "loginscreen": {
+    "title": "Login",
+    "username": "Username",
+    "password": "Password",
+    "login": "Login",
+    "forgotpassword": "Forgot Password?",
+    "signup": "Sign Up"
+  },
+  "registerscreen": {
+    "title": "Register",
+    "name": "Name",
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "phone": "Phone Number",
+    "confirmpassword": "Confirm Password",
+    "register": "Register",
+    "alreadyhaveaccount": "Already have an account? Login",
+    "terms": "Terms and Conditions",
+    "privacy": "Privacy Policy"
+  }
+}

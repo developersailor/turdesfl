@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:gen/gen.dart';
 import 'package:turdes/features/register/service/register_service.dart';
-import 'package:turdes/product/service/interface/register_operation.dart';
 
 part 'register_event.dart';
 part 'register_state.dart';

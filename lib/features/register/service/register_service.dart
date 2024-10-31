@@ -1,7 +1,6 @@
+import 'package:gen/gen.dart';
 import 'package:turdes/product/service/interface/register_operation.dart';
 import 'package:turdes/product/service/manager/index.dart';
-import 'package:turdes/product/service/manager/product_service_manager.dart';
-import 'package:gen/gen.dart';
 import 'package:vexana/vexana.dart';
 
 class RegisterService extends RegisterOperation {
