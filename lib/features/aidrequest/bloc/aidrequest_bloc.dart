@@ -19,14 +19,13 @@ class AidrequestBloc extends Bloc<AidrequestEvent, AidrequestState> {
     emit(AidrequestLoading());
     try {
       final aidRequests = await aidrequestService.getAidrequestList();
-      print('Aid Requests: $aidRequests'); // Debugging output
+
       if (aidRequests.isEmpty) {
         emit(const AidrequestEmpty());
       } else {
         emit(AidrequestLoaded(aidRequests));
       }
     } catch (e) {
-      print('Error: $e'); // Debugging output
       emit(AidrequestError(e.toString()));
     }
   }
@@ -39,7 +38,7 @@ class AidrequestBloc extends Bloc<AidrequestEvent, AidrequestState> {
     try {
       final aidRequest =
           await aidrequestService.createAidrequest(event.request);
-      print('Aid Request: $aidRequest'); // Debugging output
+
       if (aidRequest != null) {
         emit(AidrequestCreate(aidRequest));
         // Fetch the updated list of aid requests after creation
@@ -48,7 +47,6 @@ class AidrequestBloc extends Bloc<AidrequestEvent, AidrequestState> {
         emit(const AidrequestEmpty());
       }
     } catch (e) {
-      print('Error: $e'); // Debugging output
       emit(AidrequestCreateError(e.toString()));
     }
   }

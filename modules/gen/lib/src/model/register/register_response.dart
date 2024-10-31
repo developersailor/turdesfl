@@ -8,8 +8,8 @@
  */
 library;
 
-import 'package:vexana/vexana.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:vexana/vexana.dart';
 
 part 'register_response.g.dart';
 

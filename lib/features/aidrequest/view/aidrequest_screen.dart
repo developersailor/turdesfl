@@ -1,9 +1,11 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gen/gen.dart';
 import 'package:turdes/features/aidrequest/bloc/aidrequest_bloc.dart';
 import 'package:turdes/features/aidrequest/view/aidrequest_mixin.dart';
+import 'package:turdes/product/init/language/locale_keys.g.dart';
 import 'package:turdes/product/state/base/base_state.dart';
 import 'package:turdes/product/state/container/product_state_items.dart';
 import 'package:turdes/product/widget/bottom_model_sheet/bottom_model_sheet.dart';
@@ -25,7 +27,7 @@ class _AidrequestsScreenState extends BaseState<AidrequestsScreen>
       listener: (context, state) {
         if (state is AidrequestCreate) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Aid request created successfully!')),
+            SnackBar(content: Text(LocaleKeys.aidrequestscreen_success.tr())),
           );
         } else if (state is AidrequestCreateError) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -57,14 +59,20 @@ class _AidrequestsScreenState extends BaseState<AidrequestsScreen>
               } else if (state is AidrequestError) {
                 return Center(child: Text('Error: ${state.message}'));
               } else if (state is AidrequestEmpty) {
-                return const Center(child: Text('No aid requests available.'));
+                return Center(
+                  child: Text(LocaleKeys.aidrequestscreen_emptyState.tr()),
+                );
               } else if (state is AidrequestLoaded) {
                 return AidrequestsList(aidrequests: state.aidRequests);
               } else if (state is AidrequestCreate) {
                 // Handle the state after creation
-                return const Center(child: Text('Aid request created.'));
+                return SnackBar(
+                  content: Text(LocaleKeys.aidrequestscreen_success.tr()),
+                );
               } else {
-                return const Center(child: Text('Unexpected state.'));
+                return Center(
+                  child: Text(LocaleKeys.aidrequestscreen_unexpectedState.tr()),
+                );
               }
             },
           ),
@@ -113,7 +121,7 @@ class _AidRequestCreateViewState extends State<AidRequestCreateView> {
                   ),
                 );
           },
-          child: const Text('Create'),
+          child: Text(LocaleKeys.aidrequestscreen_create.tr()),
         ),
       ],
     );

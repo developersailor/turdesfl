@@ -8,6 +8,7 @@
 } 
 
  */
+library;
 
 class RegisterPayload {
   RegisterPayload({

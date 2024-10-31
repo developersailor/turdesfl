@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -6,6 +7,7 @@ import 'package:logger/logger.dart';
 import 'package:turdes/features/login/bloc/login_bloc.dart';
 import 'package:turdes/features/login/bloc/login_state.dart';
 import 'package:turdes/features/login/view/mixin/login_mixin.dart';
+import 'package:turdes/product/init/language/locale_keys.g.dart';
 import 'package:turdes/product/navigation/app_router.gr.dart';
 import 'package:turdes/product/state/container/product_state_items.dart';
 
@@ -24,10 +26,8 @@ class LoginScreen extends StatelessWidget {
         child: BlocListener<LoginBloc, LoginState>(
           listener: (context, state) {
             if (state is LoginSuccess) {
-              Logger().i('Login successful, navigating to HomeRoute');
               context.router.push(const AidrequestsRoute());
             } else if (state is LoginFailure) {
-              Logger().e('Login failed: ${state.error}');
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text(state.error)),
               );
@@ -52,12 +52,16 @@ class LoginForm extends StatelessWidget with LoginScreenMixin {
         children: [
           TextField(
             controller: emailController,
-            decoration: const InputDecoration(labelText: 'E-posta'),
+            decoration: InputDecoration(
+              labelText: LocaleKeys.registerscreen_email.tr(),
+            ),
           ),
           const SizedBox(height: 16),
           TextField(
             controller: passwordController,
-            decoration: const InputDecoration(labelText: 'Şifre'),
+            decoration: InputDecoration(
+              labelText: LocaleKeys.loginscreen_password.tr(),
+            ),
             obscureText: true,
           ),
           const SizedBox(height: 32),
@@ -78,13 +82,13 @@ class LoginForm extends StatelessWidget with LoginScreenMixin {
                             ),
                           );
                     },
-                    child: const Text('Giriş Yap'),
+                    child: Text(LocaleKeys.loginscreen_login.tr()),
                   ),
                   ElevatedButton(
                     onPressed: () {
                       context.router.push(RegisterRoute());
                     },
-                    child: const Text('Register'),
+                    child: Text(LocaleKeys.loginscreen_login.tr()),
                   ),
                 ],
               );

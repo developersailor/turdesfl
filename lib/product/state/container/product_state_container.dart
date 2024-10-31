@@ -60,7 +60,8 @@ final class ProductContainer {
       ..registerLazySingleton<RegisterBloc>(
         () => RegisterBloc(
           RegisterService(
-              productServiceManager: _getIt<ProductNetworkManager>()),
+            productServiceManager: _getIt<ProductNetworkManager>(),
+          ),
         ),
       );
   }
