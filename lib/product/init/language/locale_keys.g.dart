@@ -12,6 +12,7 @@ abstract class  LocaleKeys {
   static const aidrequestscreen_emptyState = 'aidrequestscreen.emptyState';
   static const aidrequestscreen_unexpectedState = 'aidrequestscreen.unexpectedState';
   static const aidrequestscreen_create = 'aidrequestscreen.create';
+  static const aidrequestscreen_type = 'aidrequestscreen.type';
   static const aidrequestscreen = 'aidrequestscreen';
   static const loginscreen_title = 'loginscreen.title';
   static const loginscreen_username = 'loginscreen.username';

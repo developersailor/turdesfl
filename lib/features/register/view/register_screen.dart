@@ -7,6 +7,7 @@ import 'package:turdes/features/register/service/register_service.dart';
 import 'package:turdes/product/init/language/locale_keys.g.dart';
 import 'package:turdes/product/service/manager/product_service_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:widgets/widgets.dart';
 
 @RoutePage()
 class RegisterScreen extends StatelessWidget {
@@ -42,29 +43,21 @@ class RegisterScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
-                TextField(
+                CustomTextField(
                   controller: nameController,
-                  decoration: InputDecoration(
-                    labelText: LocaleKeys.registerscreen_name.tr(),
-                  ),
+                  labelText: LocaleKeys.registerscreen_name.tr(),
                 ),
-                TextField(
+                CustomTextField(
                   controller: emailController,
-                  decoration: InputDecoration(
-                    labelText: LocaleKeys.registerscreen_email.tr(),
-                  ),
+                  labelText: LocaleKeys.registerscreen_email.tr(),
                 ),
-                TextField(
+                CustomTextField(
                   controller: phoneController,
-                  decoration: InputDecoration(
-                    labelText: LocaleKeys.registerscreen_phone.tr(),
-                  ),
+                  labelText: LocaleKeys.registerscreen_phone.tr(),
                 ),
-                TextField(
+                CustomTextField(
                   controller: passwordController,
-                  decoration: InputDecoration(
-                    labelText: LocaleKeys.registerscreen_password.tr(),
-                  ),
+                  labelText: LocaleKeys.registerscreen_password.tr(),
                 ),
                 const SizedBox(height: 16),
                 BlocBuilder<RegisterBloc, RegisterState>(
@@ -72,7 +65,7 @@ class RegisterScreen extends StatelessWidget {
                     if (state.status == RegisterStatus.loading) {
                       return const CircularProgressIndicator();
                     }
-                    return ElevatedButton(
+                    return CustomButton(
                       onPressed: () {
                         final payload = RegisterPayload(
                           name: nameController.text,
@@ -83,7 +76,7 @@ class RegisterScreen extends StatelessWidget {
                         );
                         context.read<RegisterBloc>().add(RegisterUser(payload));
                       },
-                      child: Text(LocaleKeys.registerscreen_register.tr()),
+                      text: LocaleKeys.registerscreen_register.tr(),
                     );
                   },
                 ),

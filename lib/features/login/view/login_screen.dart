@@ -10,6 +10,7 @@ import 'package:turdes/features/login/view/mixin/login_mixin.dart';
 import 'package:turdes/product/init/language/locale_keys.g.dart';
 import 'package:turdes/product/navigation/app_router.gr.dart';
 import 'package:turdes/product/state/container/product_state_items.dart';
+import 'package:widgets/widgets.dart';
 
 @RoutePage()
 class LoginScreen extends StatelessWidget {
@@ -50,18 +51,14 @@ class LoginForm extends StatelessWidget with LoginScreenMixin {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          TextField(
+          CustomTextField(
             controller: emailController,
-            decoration: InputDecoration(
-              labelText: LocaleKeys.registerscreen_email.tr(),
-            ),
+            labelText: LocaleKeys.registerscreen_email.tr(),
           ),
           const SizedBox(height: 16),
-          TextField(
+          CustomTextField(
             controller: passwordController,
-            decoration: InputDecoration(
-              labelText: LocaleKeys.loginscreen_password.tr(),
-            ),
+            labelText: LocaleKeys.loginscreen_password.tr(),
             obscureText: true,
           ),
           const SizedBox(height: 32),
@@ -72,7 +69,7 @@ class LoginForm extends StatelessWidget with LoginScreenMixin {
               }
               return Column(
                 children: [
-                  ElevatedButton(
+                  CustomButton(
                     onPressed: () {
                       Logger().i('Login button pressed');
                       context.read<LoginBloc>().add(
@@ -82,13 +79,13 @@ class LoginForm extends StatelessWidget with LoginScreenMixin {
                             ),
                           );
                     },
-                    child: Text(LocaleKeys.loginscreen_login.tr()),
+                    text: LocaleKeys.loginscreen_login.tr(),
                   ),
-                  ElevatedButton(
+                  CustomButton(
                     onPressed: () {
                       context.router.push(RegisterRoute());
                     },
-                    child: Text(LocaleKeys.loginscreen_login.tr()),
+                    text: LocaleKeys.registerscreen_register.tr(),
                   ),
                 ],
               );

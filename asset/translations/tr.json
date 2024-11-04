@@ -10,7 +10,8 @@
     "success": "Yardım talebi başarıyla oluşturuldu!",
     "emptyState": "Mevcut yardım talebi yok.",
     "unexpectedState": "Beklenmeyen durum.",
-    "create": "Oluştur"
+    "create": "Oluştur",
+    "type": "Yardım Talebi Türü"
   },
   "loginscreen": {
     "title": "Giriş Yap",

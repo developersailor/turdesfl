@@ -10,7 +10,8 @@
     "success": "Aid request created successfully!",
     "emptyState": "No aid requests available.",
     "unexpectedState": "Unexpected state.",
-    "create": "Create"
+    "create": "Create",
+    "type": "Aid Request Type"
   },
   "loginscreen": {
     "title": "Login",

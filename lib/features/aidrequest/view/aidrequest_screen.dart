@@ -36,9 +36,6 @@ class _AidrequestsScreenState extends BaseState<AidrequestsScreen>
         }
       },
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Aid Requests'),
-        ),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
             await ShowSheetMixin.showCustomSheet<AidRequestCreateView>(
@@ -96,15 +93,15 @@ class _AidRequestCreateViewState extends State<AidRequestCreateView> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TextField(
+        CustomTextField(
           controller: widget.typeController,
-          decoration: const InputDecoration(labelText: 'Type'),
+          labelText: LocaleKeys.aidrequestscreen_type.tr(),
         ),
-        TextField(
+        CustomTextField(
           controller: widget.descriptionController,
-          decoration: const InputDecoration(labelText: 'Description'),
+          labelText: LocaleKeys.aidrequestscreen_description.tr(),
         ),
-        ElevatedButton(
+        CustomButton(
           onPressed: () async {
             final id = await ProductStateItems.productCache.loginCacheOperation
                 .read('userId');
@@ -121,7 +118,7 @@ class _AidRequestCreateViewState extends State<AidRequestCreateView> {
                   ),
                 );
           },
-          child: Text(LocaleKeys.aidrequestscreen_create.tr()),
+          text: LocaleKeys.aidrequestscreen_create.tr(),
         ),
       ],
     );
