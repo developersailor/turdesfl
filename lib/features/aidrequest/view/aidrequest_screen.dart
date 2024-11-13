@@ -20,7 +20,7 @@ class AidrequestsScreen extends StatefulWidget {
 }
 
 class _AidrequestsScreenState extends BaseState<AidrequestsScreen>
-    with AidrequestMixin {
+    with AidrequestScreenMixin {
   @override
   Widget build(BuildContext context) {
     return BlocListener<AidrequestBloc, AidrequestState>(

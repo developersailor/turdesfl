@@ -10,6 +10,7 @@ import 'package:turdes/features/login/view/mixin/login_mixin.dart';
 import 'package:turdes/product/init/language/locale_keys.g.dart';
 import 'package:turdes/product/navigation/app_router.gr.dart';
 import 'package:turdes/product/state/container/product_state_items.dart';
+import 'package:turdes/product/widget/padding/project_padding.dart';
 import 'package:widgets/widgets.dart';
 
 @RoutePage()
@@ -69,23 +70,29 @@ class LoginForm extends StatelessWidget with LoginScreenMixin {
               }
               return Column(
                 children: [
-                  CustomButton(
-                    onPressed: () {
-                      Logger().i('Login button pressed');
-                      context.read<LoginBloc>().add(
-                            LoginButtonPressed(
-                              email: emailController.text,
-                              password: passwordController.text,
-                            ),
-                          );
-                    },
-                    text: LocaleKeys.loginscreen_login.tr(),
+                  Padding(
+                    padding: const ProjectPadding.allSmall(),
+                    child: CustomButton(
+                      onPressed: () {
+                        Logger().i('Login button pressed');
+                        context.read<LoginBloc>().add(
+                              LoginButtonPressed(
+                                email: emailController.text,
+                                password: passwordController.text,
+                              ),
+                            );
+                      },
+                      text: LocaleKeys.loginscreen_login.tr(),
+                    ),
                   ),
-                  CustomButton(
-                    onPressed: () {
-                      context.router.push(RegisterRoute());
-                    },
-                    text: LocaleKeys.registerscreen_register.tr(),
+                  Padding(
+                    padding: const ProjectPadding.allSmall(),
+                    child: CustomButton(
+                      onPressed: () {
+                        context.router.push(RegisterRoute());
+                      },
+                      text: LocaleKeys.registerscreen_register.tr(),
+                    ),
                   ),
                 ],
               );

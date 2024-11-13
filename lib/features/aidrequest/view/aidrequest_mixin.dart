@@ -6,7 +6,7 @@ import 'package:turdes/product/state/base/base_state.dart';
 import 'package:turdes/product/state/container/product_state_items.dart';
 
 /// Manage your home view business logic
-mixin AidrequestMixin on BaseState<AidrequestsScreen> {
+mixin AidrequestScreenMixin on BaseState<AidrequestsScreen> {
   late final ProductNetworkErrorManager _productNetworkErrorManager;
   @override
   void initState() {
