@@ -10,6 +10,8 @@ import 'package:turdes/product/state/base/base_state.dart';
 import 'package:turdes/product/state/container/product_state_items.dart';
 import 'package:turdes/product/widget/bottom_model_sheet/bottom_model_sheet.dart';
 import 'package:widgets/widgets.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 @RoutePage()
 class AidrequestsScreen extends StatefulWidget {
@@ -83,44 +85,104 @@ class AidRequestCreateView extends StatefulWidget {
   AidRequestCreateView({super.key});
   final TextEditingController typeController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController locationController = TextEditingController();
+  final TextEditingController categoryController = TextEditingController();
+  final ImagePicker imagePicker = ImagePicker();
+  XFile? selectedImage;
+  LatLng? selectedLocation;
 
   @override
   State<AidRequestCreateView> createState() => _AidRequestCreateViewState();
 }
 
 class _AidRequestCreateViewState extends State<AidRequestCreateView> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        CustomTextField(
-          controller: widget.typeController,
-          labelText: LocaleKeys.aidrequestscreen_type.tr(),
-        ),
-        CustomTextField(
-          controller: widget.descriptionController,
-          labelText: LocaleKeys.aidrequestscreen_description.tr(),
-        ),
-        CustomButton(
-          onPressed: () async {
-            final id = await ProductStateItems.productCache.loginCacheOperation
-                .read('userId');
-            if (!context.mounted) return;
-            context.read<AidrequestBloc>().add(
-                  CreateAidrequest(
-                    AidrequestPayload(
-                      type: widget.typeController.text,
-                      description: widget.descriptionController.text,
-                      status: 'pending',
-                      userId: int.parse(id ?? '0'),
-                      organizationId: 1,
-                    ),
-                  ),
-                );
-          },
-          text: LocaleKeys.aidrequestscreen_create.tr(),
-        ),
-      ],
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: [
+          CustomTextField(
+            controller: widget.nameController,
+            labelText: 'Name',
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Name is required';
+              }
+              return null;
+            },
+          ),
+          CustomTextField(
+            controller: widget.descriptionController,
+            labelText: 'Description',
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Description is required';
+              }
+              return null;
+            },
+          ),
+          CustomTextField(
+            controller: widget.locationController,
+            labelText: 'Location',
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Location is required';
+              }
+              return null;
+            },
+          ),
+          CustomTextField(
+            controller: widget.categoryController,
+            labelText: 'Category',
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Category is required';
+              }
+              return null;
+            },
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              final pickedFile = await widget.imagePicker.pickImage(source: ImageSource.gallery);
+              setState(() {
+                widget.selectedImage = pickedFile;
+              });
+            },
+            child: const Text('Upload Photo'),
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              // Implement Google Maps location picker here
+            },
+            child: const Text('Select Location'),
+          ),
+          CustomButton(
+            onPressed: () async {
+              if (_formKey.currentState?.validate() ?? false) {
+                final id = await ProductStateItems.productCache.loginCacheOperation
+                    .read('userId');
+                if (!context.mounted) return;
+                context.read<AidrequestBloc>().add(
+                      CreateAidrequest(
+                        AidrequestPayload(
+                          type: widget.typeController.text,
+                          description: widget.descriptionController.text,
+                          status: 'pending',
+                          userId: int.parse(id ?? '0'),
+                          organizationId: 1,
+                        ),
+                      ),
+                    );
+              }
+            },
+            text: LocaleKeys.aidrequestscreen_create.tr(),
+          ),
+        ],
+      ),
     );
   }
 }

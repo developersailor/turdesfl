@@ -94,6 +94,24 @@ class LoginForm extends StatelessWidget with LoginScreenMixin {
                       text: LocaleKeys.registerscreen_register.tr(),
                     ),
                   ),
+                  Padding(
+                    padding: const ProjectPadding.allSmall(),
+                    child: CustomButton(
+                      onPressed: () {
+                        // Add password reset functionality here
+                      },
+                      text: LocaleKeys.loginscreen_forgotpassword.tr(),
+                    ),
+                  ),
+                  Padding(
+                    padding: const ProjectPadding.allSmall(),
+                    child: CustomButton(
+                      onPressed: () {
+                        // Add email verification functionality here
+                      },
+                      text: 'Verify Email',
+                    ),
+                  ),
                 ],
               );
             },

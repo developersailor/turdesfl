@@ -13,6 +13,14 @@
     "create": "Create",
     "type": "Aid Request Type"
   },
+  "aidrequestdetailscreen": {
+    "title": "Aid Request Details",
+    "description": "Description",
+    "document": "Document",
+    "photo": "Photo",
+    "addComment": "Add a comment",
+    "send": "Send"
+  },
   "loginscreen": {
     "title": "Login",
     "username": "Username",
