@@ -1,19 +1,10 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
-
-// **************************************************************************
-// AutoRouterGenerator
-// **************************************************************************
-
-// ignore_for_file: type=lint
-// coverage:ignore-file
-
-// ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i5;
 import 'package:flutter/material.dart' as _i6;
 import 'package:turdes/features/aidrequest/view/aidrequest_screen.dart' as _i1;
 import 'package:turdes/features/home/view/home_screen.dart' as _i2;
 import 'package:turdes/features/login/view/login_screen.dart' as _i3;
 import 'package:turdes/features/register/view/register_screen.dart' as _i4;
+import 'package:turdes/features/aidrequest/view/aidrequest_detail_screen.dart' as _i7;
 
 /// generated route for
 /// [_i1.AidrequestsScreen]
@@ -104,5 +95,39 @@ class RegisterRouteArgs {
   @override
   String toString() {
     return 'RegisterRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [_i7.AidRequestDetailScreen]
+class AidRequestDetailRoute extends _i5.PageRouteInfo<AidRequestDetailRouteArgs> {
+  AidRequestDetailRoute({
+    required int aidRequestId,
+    List<_i5.PageRouteInfo>? children,
+  }) : super(
+          AidRequestDetailRoute.name,
+          args: AidRequestDetailRouteArgs(aidRequestId: aidRequestId),
+          initialChildren: children,
+        );
+
+  static const String name = 'AidRequestDetailRoute';
+
+  static _i5.PageInfo page = _i5.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<AidRequestDetailRouteArgs>();
+      return _i7.AidRequestDetailScreen(aidRequestId: args.aidRequestId);
+    },
+  );
+}
+
+class AidRequestDetailRouteArgs {
+  const AidRequestDetailRouteArgs({required this.aidRequestId});
+
+  final int aidRequestId;
+
+  @override
+  String toString() {
+    return 'AidRequestDetailRouteArgs{aidRequestId: $aidRequestId}';
   }
 }

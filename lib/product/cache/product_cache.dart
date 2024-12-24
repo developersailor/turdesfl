@@ -22,4 +22,12 @@ final class ProductCache {
   late final SecureCacheManager loginCacheOperation = SecureCacheManager(
     path: 'login',
   );
+
+  Future<void> saveJwtToken(String token) async {
+    await userCacheOperation.write('jwt_token', token);
+  }
+
+  Future<String?> getJwtToken() async {
+    return await userCacheOperation.read('jwt_token');
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:turdes/product/navigation/app_router.gr.dart';
+import 'package:turdes/features/profile/view/profile_screen.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Screen|Page,Route')
 
@@ -15,6 +16,8 @@ final class AppRouter extends RootStackRouter {
         AutoRoute(page: HomeRoute.page, path: '/home'),
         AutoRoute(page: AidrequestsRoute.page, path: '/aidrequestview'),
         AutoRoute(page: RegisterRoute.page, path: '/register'),
+        AutoRoute(page: ProfileScreen, path: '/profile'),
+        AutoRoute(page: AidRequestDetailScreen.page, path: '/aidrequestdetail'),
       ];
 
   @override

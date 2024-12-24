@@ -13,6 +13,14 @@
     "create": "Oluştur",
     "type": "Yardım Talebi Türü"
   },
+  "aidrequestdetailscreen": {
+    "title": "Yardım Talebi Detayları",
+    "description": "Açıklama",
+    "document": "Belge",
+    "photo": "Fotoğraf",
+    "addComment": "Yorum ekle",
+    "send": "Gönder"
+  },
   "loginscreen": {
     "title": "Giriş Yap",
     "username": "Kullanıcı Adı",

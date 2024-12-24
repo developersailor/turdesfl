@@ -1,5 +1,3 @@
-// ignore_for_file: public_member_api_docs
-
 import 'package:gen/gen.dart';
 import 'package:turdes/product/service/manager/product_service_path.dart';
 import 'package:vexana/vexana.dart';
@@ -24,6 +22,36 @@ class LoginService {
     } else {
       // Handle error or null response
       return null;
+    }
+  }
+
+  Future<void> resetPassword(String email) async {
+    final response = await _networkManager.send<void, void>(
+      ProductServicePath.login.value + '/reset-password',
+      method: RequestType.POST,
+      data: {
+        'email': email,
+      },
+    );
+
+    if (response.error != null) {
+      // Handle error
+      throw Exception('Failed to reset password');
+    }
+  }
+
+  Future<void> verifyEmail(String email) async {
+    final response = await _networkManager.send<void, void>(
+      ProductServicePath.login.value + '/verify-email',
+      method: RequestType.POST,
+      data: {
+        'email': email,
+      },
+    );
+
+    if (response.error != null) {
+      // Handle error
+      throw Exception('Failed to verify email');
     }
   }
 }
