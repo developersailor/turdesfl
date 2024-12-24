@@ -1,12 +1,13 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gen/gen.dart';
 import 'package:turdes/features/aidrequest/bloc/aidrequest_bloc.dart';
 import 'package:turdes/product/state/base/base_state.dart';
-import 'package:turdes/product/state/container/product_state_items.dart';
-import 'package:widgets/widgets.dart';
 
+@RoutePage()
 class AidRequestListScreen extends StatefulWidget {
-  const AidRequestListScreen({Key? key}) : super(key: key);
+  const AidRequestListScreen({super.key});
 
   @override
   _AidRequestListScreenState createState() => _AidRequestListScreenState();
@@ -55,11 +56,11 @@ class _AidRequestListScreenState extends BaseState<AidRequestListScreen> {
             } else if (state is AidrequestError) {
               return Center(child: Text('Error: ${state.message}'));
             } else if (state is AidrequestEmpty) {
-              return Center(child: Text('No aid requests available.'));
+              return const Center(child: Text('No aid requests available.'));
             } else if (state is AidrequestLoaded) {
               return AidRequestListView(aidrequests: state.aidRequests);
             } else {
-              return Center(child: Text('Unexpected state.'));
+              return const Center(child: Text('Unexpected state.'));
             }
           },
         ),
@@ -69,8 +70,7 @@ class _AidRequestListScreenState extends BaseState<AidRequestListScreen> {
 }
 
 class AidRequestListView extends StatelessWidget {
-  const AidRequestListView({required this.aidrequests, Key? key})
-      : super(key: key);
+  const AidRequestListView({required this.aidrequests, super.key});
 
   final List<AidrequestResponse> aidrequests;
 
@@ -89,7 +89,7 @@ class AidRequestListView extends StatelessWidget {
     );
   }
 
-  Widget _buildStatusIcon(String status) {
+  Widget _buildStatusIcon(String? status) {
     switch (status) {
       case 'approved':
         return const Icon(Icons.check_circle, color: Colors.green);

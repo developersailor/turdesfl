@@ -16,8 +16,8 @@ final class AppRouter extends RootStackRouter {
         AutoRoute(page: HomeRoute.page, path: '/home'),
         AutoRoute(page: AidrequestsRoute.page, path: '/aidrequestview'),
         AutoRoute(page: RegisterRoute.page, path: '/register'),
-        AutoRoute(page: ProfileScreen, path: '/profile'),
-        AutoRoute(page: AidRequestDetailScreen.page, path: '/aidrequestdetail'),
+        AutoRoute(page: ProfileRoute.page, path: '/profile'),
+        AutoRoute(page: AidRequestDetailRoute.page, path: '/aidrequestdetail'),
       ];
 
   @override

@@ -26,8 +26,9 @@ class LoginService {
   }
 
   Future<void> resetPassword(String email) async {
-    final response = await _networkManager.send<void, void>(
-      ProductServicePath.login.value + '/reset-password',
+    final response = await _networkManager.send<EmptyModel, EmptyModel>(
+      '${ProductServicePath.login.value}/reset-password',
+      parseModel: const EmptyModel(),
       method: RequestType.POST,
       data: {
         'email': email,
@@ -41,8 +42,9 @@ class LoginService {
   }
 
   Future<void> verifyEmail(String email) async {
-    final response = await _networkManager.send<void, void>(
-      ProductServicePath.login.value + '/verify-email',
+    final response = await _networkManager.send<EmptyModel, EmptyModel>(
+      '${ProductServicePath.login.value}/verify-email',
+      parseModel: const EmptyModel(),
       method: RequestType.POST,
       data: {
         'email': email,
