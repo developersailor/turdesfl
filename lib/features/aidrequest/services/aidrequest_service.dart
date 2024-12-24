@@ -57,4 +57,40 @@ class AidrequestService extends AidrequestOperation {
     }
     return null;
   }
+
+  Future<AidrequestResponse?> getAidrequestDetail(int aidRequestId) async {
+    final token = await _productCache.loginCacheOperation.read('token');
+    final response = await _networkManager.send<AidrequestResponse, AidrequestResponse>(
+      ProductServicePath.aidrequest.withQuery(aidRequestId.toString()),
+      parseModel: const AidrequestResponse(),
+      method: RequestType.GET,
+      options: Options(
+        headers: {
+          'Authorization': 'Bearer $token',
+        },
+      ),
+    );
+    if (response.data != null) {
+      return response.data;
+    }
+    return null;
+  }
+
+  Future<bool> postComment(int aidRequestId, String comment) async {
+    final token = await _productCache.loginCacheOperation.read('token');
+    final response = await _networkManager.send<EmptyModel, EmptyModel>(
+      ProductServicePath.aidrequest.withQuery('$aidRequestId/comments'),
+      parseModel: const EmptyModel(),
+      method: RequestType.POST,
+      data: {
+        'comment': comment,
+      },
+      options: Options(
+        headers: {
+          'Authorization': 'Bearer $token',
+        },
+      ),
+    );
+    return response.data != null;
+  }
 }

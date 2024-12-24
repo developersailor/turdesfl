@@ -1,4 +1,3 @@
-// aidrequest_state.dart
 part of 'aidrequest_bloc.dart';
 
 abstract class AidrequestState {
@@ -31,4 +30,13 @@ class AidrequestCreateError extends AidrequestState {
 class AidrequestError extends AidrequestState {
   const AidrequestError(this.message);
   final String message;
+}
+
+class AidrequestDetailLoaded extends AidrequestState {
+  const AidrequestDetailLoaded(this.aidRequest);
+  final AidrequestResponse aidRequest;
+}
+
+class AidrequestCommentPosted extends AidrequestState {
+  const AidrequestCommentPosted();
 }
