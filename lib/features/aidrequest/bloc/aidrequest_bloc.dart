@@ -11,6 +11,7 @@ class AidrequestBloc extends Bloc<AidrequestEvent, AidrequestState> {
     on<CreateAidrequest>(_onCreateAidrequest);
     on<FetchAidrequestDetail>(_onFetchAidrequestDetail);
     on<PostComment>(_onPostComment);
+    on<FilterAidrequestList>(_onFilterAidrequestList);
   }
   final AidrequestService aidrequestService;
 
@@ -83,6 +84,27 @@ class AidrequestBloc extends Bloc<AidrequestEvent, AidrequestState> {
         emit(const AidrequestCommentPosted());
       } else {
         emit(const AidrequestError('Failed to post comment'));
+      }
+    } catch (e) {
+      emit(AidrequestError(e.toString()));
+    }
+  }
+
+  Future<void> _onFilterAidrequestList(
+    FilterAidrequestList event,
+    Emitter<AidrequestState> emit,
+  ) async {
+    emit(AidrequestLoading());
+    try {
+      final aidRequests = await aidrequestService.getAidrequestList();
+      final filteredAidRequests = aidRequests.where((aidRequest) {
+        return aidRequest.status == event.filter;
+      }).toList();
+
+      if (filteredAidRequests.isEmpty) {
+        emit(const AidrequestEmpty());
+      } else {
+        emit(AidrequestLoaded(filteredAidRequests));
       }
     } catch (e) {
       emit(AidrequestError(e.toString()));

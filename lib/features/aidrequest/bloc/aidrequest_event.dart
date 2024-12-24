@@ -21,3 +21,8 @@ class PostComment extends AidrequestEvent {
   final int aidRequestId;
   final String comment;
 }
+
+class FilterAidrequestList extends AidrequestEvent {
+  const FilterAidrequestList(this.filter);
+  final String filter;
+}
