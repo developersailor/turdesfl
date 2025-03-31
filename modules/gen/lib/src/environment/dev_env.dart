@@ -10,11 +10,6 @@ final class DevEnv implements AppConfiguration {
   @EnviedField(varName: 'BASE_URL')
   static final String _baseUrl = _DevEnv._baseUrl;
 
-  @EnviedField(varName: 'TOKEN')
-  static final String _token = _DevEnv._token;
-
   @override
   String get baseUrl => _baseUrl;
-  @override
-  String get token => _token;
 }
