@@ -19,10 +19,7 @@ final class AppEnvironment {
 /// Get application environment items
 enum AppEnvironmentItems {
   /// Network base url
-  baseUrl,
-
-  /// Google maps api key
-  token;
+  baseUrl;
 
   /// Get application environment item value
   String get value {
@@ -30,8 +27,6 @@ enum AppEnvironmentItems {
       switch (this) {
         case AppEnvironmentItems.baseUrl:
           return AppEnvironment._config.baseUrl;
-        case AppEnvironmentItems.token:
-          return AppEnvironment._config.token;
       }
     } catch (e) {
       throw Exception('AppEnvironment is not initialized.');

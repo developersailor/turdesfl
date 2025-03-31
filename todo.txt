@@ -1,0 +1,31 @@
+
+📌 Issue List for Turdes Flutter App
+
+🏗 Core Features
+	•	Kullanıcı Girişi ve Kayıt Sistemi (#1)
+	•	Firebase Authentication veya JWT desteği eklenmeli.
+	•	Google, Apple gibi üçüncü taraf giriş yöntemleri desteklenmeli.
+	•	Yardım Talebi Oluşturma (#2)
+	•	Kullanıcılar yardım taleplerini kategoriye göre oluşturabilmeli.
+	•	Talep için konum ve belge ekleyebilme desteği olmalı.
+	•	Talep Durumu Görüntüleme (#3)
+	•	Kullanıcılar oluşturdukları yardım taleplerinin durumlarını (“Beklemede”, “Onaylandı” vb.) takip edebilmeli.
+	•	Bildirim Sistemi (#4)
+	•	Talep durumu değiştiğinde anlık bildirim (push notification) gönderilmeli.
+
+🗺 Ekstra Özellikler
+	•	Yardım Haritası (#5)
+	•	Kullanıcılar harita üzerinden aktif yardım noktalarını görebilmeli.
+	•	Gönüllü Kayıt & Görev Dağılımı (#6)
+	•	Kullanıcılar gönüllü olarak kayıt olabilir ve organizasyonlar görev atayabilir.
+	•	Bağış Yönetimi (#7)
+	•	Kullanıcılar yaptıkları bağışları görebilmeli ve teşekkür mesajları alabilmeli.
+	•	Anonim Bağış ve Yardım Seçeneği (#8)
+	•	Bağışçılar ve gönüllüler, anonim kalmayı seçebilmeli.
+	•	QR Kod ile Yardım Takibi (#9)
+	•	Her talep için özel bir QR kod oluşturulmalı.
+	•	Gönüllüler ve organizasyonlar, yardımların teslim edildiğini QR kod ile doğrulayabilmeli.
+	•	Çoklu Dil Desteği (#10)
+	•	Türkçe ve İngilizce başta olmak üzere farklı diller desteklenmeli.
+	•	SSS ve Bilgilendirme Sayfası (#11)
+	•	Kullanıcıların sıkça sorulan sorulara ulaşabileceği bir bilgilendirme ekranı eklenmeli.

@@ -4,8 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:turdes/product/init/application_initialize.dart';
 import 'package:turdes/product/init/product_localization.dart';
 import 'package:turdes/product/init/state_initialize.dart';
-import 'package:turdes/product/init/theme/custom_dark_theme.dart';
-import 'package:turdes/product/init/theme/custom_light_theme.dart';
+
 import 'package:turdes/product/navigation/app_router.dart';
 import 'package:turdes/product/state/view_model/product_view_model.dart';
 import 'package:widgets/widgets.dart';
@@ -23,8 +22,6 @@ final class _MyApp extends StatelessWidget {
     return MaterialApp.router(
       routerConfig: _appRouter.config(),
       builder: CustomResponsive.build,
-      theme: CustomLightTheme().themeData,
-      darkTheme: CustomDarkTheme().themeData,
       themeMode: context.watch<ProductViewModel>().state.themeMode,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
