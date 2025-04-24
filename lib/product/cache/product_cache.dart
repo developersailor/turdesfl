@@ -4,16 +4,12 @@ import 'package:turdes/product/cache/model/login_cache_model.dart';
 /// [ProductCache] is a cache manager for the product module.
 final class ProductCache {
   ProductCache({required CacheManager cacheManager})
-      : _cacheManager = cacheManager;
+    : _cacheManager = cacheManager;
 
   final CacheManager _cacheManager;
 
   Future<void> init() async {
-    await _cacheManager.init(
-      items: [
-        LoginCacheModel.empty(),
-      ],
-    );
+    await _cacheManager.init(items: [LoginCacheModel.empty()]);
   }
 
   late final SecureCacheManager userCacheOperation = SecureCacheManager(
@@ -28,6 +24,6 @@ final class ProductCache {
   }
 
   Future<String?> getJwtToken() async {
-    return await userCacheOperation.read('jwt_token');
+    return userCacheOperation.read('jwt_token');
   }
 }

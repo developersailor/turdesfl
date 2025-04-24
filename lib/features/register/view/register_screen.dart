@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gen/gen.dart';
@@ -6,7 +7,6 @@ import 'package:turdes/features/register/bloc/register_bloc.dart';
 import 'package:turdes/features/register/service/register_service.dart';
 import 'package:turdes/product/init/language/locale_keys.g.dart';
 import 'package:turdes/product/service/manager/product_service_manager.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:widgets/widgets.dart';
 
 @RoutePage()
@@ -20,13 +20,14 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => RegisterBloc(
-        RegisterService(productServiceManager: ProductNetworkManager.base()),
-      ),
+      create:
+          (context) => RegisterBloc(
+            RegisterService(
+              productServiceManager: ProductNetworkManager.base(),
+            ),
+          ),
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(LocaleKeys.registerscreen_title.tr()),
-        ),
+        appBar: AppBar(title: Text(LocaleKeys.registerscreen_title.tr())),
         body: BlocListener<RegisterBloc, RegisterState>(
           listener: (context, state) {
             if (state.status == RegisterStatus.success) {
