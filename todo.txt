@@ -29,3 +29,107 @@
 	•	Türkçe ve İngilizce başta olmak üzere farklı diller desteklenmeli.
 	•	SSS ve Bilgilendirme Sayfası (#11)
 	•	Kullanıcıların sıkça sorulan sorulara ulaşabileceği bir bilgilendirme ekranı eklenmeli.
+
+
+Uyumlu Özellik Önerileri – Turdes Flutter App
+
+🧾 #12 – Yardım Talebi Detay ve Güncelleme
+	•	Açıklama: Kullanıcılar, daha önce oluşturdukları yardım taleplerini detaylı biçimde görüntüleyebilmeli ve duruma göre yorum veya belge ekleyebilmeli.
+	•	Backend Uyumu: aid-requests/:id/comments, aid-requests/:id/documents
+	•	Widget: AidRequestDetailView, CommentList, FileUploadCard
+
+⸻
+
+🛂 #13 – Rol Tabanlı Erişim Kontrolü
+	•	Açıklama: Flutter uygulamasında admin, gönüllü, kullanıcı gibi rollerle dinamik sayfa gösterimi yapılmalı.
+	•	Backend Uyumu: JWT içerisindeki rol bilgisi decode edilip Bloc veya GetIt tabanlı olarak yönlendirme yapılmalı.
+	•	Kütüphane: flutter_bloc, hydrated_bloc, get_it
+
+⸻
+
+🧾 #14 – Organizasyon Paneli (Mobil)
+	•	Açıklama: Organizasyon adminleri mobilde yardım taleplerini filtreleyip, durum değiştirebilmeli.
+	•	Backend Uyumu: PATCH endpoint’ler (/aid-requests/:id/status)
+	•	Özellik: Role göre arayüz farklılıkları (BlocBuilder<AuthState> ile conditional UI)
+
+⸻
+
+📍 #15 – Harita Üzerinden Yardım Talepleri
+	•	Açıklama: Kullanıcılar sadece merkezleri değil, taleplerin coğrafi konumlarını da haritada görebilmeli.
+	•	Backend Uyumu: GET /api/map/aid-centers + aidRequests konum alanı
+	•	Kütüphane: google_maps_flutter, marker clustering desteği eklenebilir
+
+⸻
+
+📊 #16 – Bağış ve Gönüllülük Geçmişi
+	•	Açıklama: Kullanıcılar geçmiş yardım, bağış ve gönüllü görev katılımlarını profil sayfasından görebilmeli.
+	•	Backend Uyumu: GET /api/history/*
+	•	Widget: HistoryListView, DonationCard, VolunteerTaskList
+
+⸻
+
+🔔 #17 – Görev Takip & Bildirim Merkezi
+	•	Açıklama: Gönüllülere atanan görevler uygulama içinde bir görev ekranında listelenmeli. Görev güncellemeleri push notification ile yapılmalı.
+	•	Backend Uyumu: GET /api/tasks, PATCH /api/tasks/:id/status + Firebase FCM entegrasyonu
+	•	Kütüphane: flutter_local_notifications, firebase_messaging
+
+⸻
+
+📎 #18 – Belgeleri Görüntüleme ve İndirme
+	•	Açıklama: Talep ve görevlerle ilişkilendirilmiş belgeler (PDF, image) uygulama içinde görüntülenebilmeli.
+	•	Backend Uyumu: /documents endpoint’leri
+	•	Kütüphane: file_picker, image_picker, url_launcher, pdf_viewer_flutter
+
+⸻
+
+📈 #19 – Mini Analitik Panel
+	•	Açıklama: Kullanıcılar kendi bağış/görev/talep istatistiklerini grafiklerle görebilmeli.
+	•	Backend Uyumu: /reports endpoint’leri
+	•	Kütüphane: fl_chart, charts_flutter
+
+⸻
+
+🧷 #20 – Etkinlik Takvimi & Kayıt
+	•	Açıklama: Yardım etkinlikleri takvim görünümünde listelenmeli, kullanıcılar katılım başvurusu yapabilmeli.
+	•	Backend Uyumu: events modülü
+	•	Kütüphane: table_calendar, flutter_event_calendar
+
+
+	⚙️ Teknik/Bakım Odaklı Ekstra Issue Önerileri
+
+🔁 #21 Uygulama Başlatma & Oturum Yönetimi (Splash + Auth Guard)
+	•	Kullanıcı oturumu kontrolü (token var mı, geçerli mi) Splash ekranında yapılmalı.
+	•	AutoRoute içinde AuthGuard tanımlanmalı.
+	•	Token varsa doğrudan dashboard’a yönlendirilmeli, yoksa login’e.
+
+⸻
+
+🧪 #22 UI Bileşen Testleri ve Widget Test Coverage
+	•	Widget seviyesinde testler (form doğrulama, buton aksiyonları)
+	•	flutter_test, mocktail, bloc_test kullanılabilir.
+	•	Hedef: kritik ekranların %80+ test coverage’ı
+
+⸻
+
+🧱 #23 Uygulama Mimari Belgesi (README + Wiki)
+	•	Proje yapısı, modül hiyerarşisi ve klasör açıklamaları bir markdown dökümanında toplanmalı.
+	•	Yeni katılan bir geliştiricinin onboarding sürecini kolaylaştırır.
+
+⸻
+
+📦 #24 Modüler Yapı Optimizasyonu
+	•	Ortak modüller (widgets, core, common) içinde hangi bileşen ne zaman kullanılmalı?
+	•	Her modülün kendi bağımlılık sınırları tanımlanmalı (örnek: widgets içinde servis olmamalı)
+
+⸻
+
+💡 #25 Dev Tools & Error Tracking Entegrasyonu (Opsiyonel ama önerilir)
+	•	flutter_flavorizr ile dev/staging/prod yapılandırması
+	•	Crash reporting: Firebase Crashlytics veya Sentry
+	•	Debug print yerine easy_logger, logger kullanımı zorunlu hale getirilmeli
+
+⸻
+
+🌐 #26 Offline Mod & Hata Senaryoları
+	•	Yardım talebi formu çevrimdışıyken doldurulup sonra gönderilebilmeli (opsiyonel)
+	•	API hatalarında kullanıcı dostu fallback mesajlar sunulmalı (BlocExceptionHandler gibi bir yapı düşünülebilir)
